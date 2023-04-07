@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15.2-alpine
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: xxxxx
+      POSTGRES_DB: xxxxx
+      POSTGRES_PASSWORD: xxxxx
+    ports:
+      - "5432:5432"
+  
+  app:
+    image: rails7-postgres:latest
+    command: sleep infinity
+    volumes:
+      - ./apps:/apps
+    ports:
+      - "3000:3000"
